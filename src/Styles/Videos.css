@@ -9,10 +9,12 @@ body{
 .mainBgColor{
     background-color:#0c1e25;
     width: 100%;
+    color: white;
 }
 .secondaryBgColor{
     background-color: #fff;
     width: 100%;
+
 }
 .movies-container img{
     width: 350px;
@@ -30,7 +32,7 @@ body{
     display: none;
 }
 .secondaryColor{
-    color: #ff206e;
+    color: black;
     width: 90%;
     display: flex;
     justify-content: center;
@@ -39,6 +41,7 @@ body{
 .movies-container h3, .movies-container img{
     cursor: pointer;
     transition: .7s;
+    margin: 10px;
 }
 .movies-container img:hover{
     transform: scale(1.05);

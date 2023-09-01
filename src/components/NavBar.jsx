@@ -12,9 +12,10 @@ import Trends from './Trends';
 export const Container  = React.createContext()
 const NavBar = () => {
     const[toggle, setToggle] = useState(true);
+    const[inputValue, setInputValue] = useState('')
 
   return (
-    <Container.Provider value={toggle}>
+    <Container.Provider value={{toggle, inputValue}}>
     <Fragment>
         <nav className={toggle ? '' : 'navBarColor'}>
             <div className='nav-options'>
@@ -35,7 +36,7 @@ const NavBar = () => {
            
             </div>
             <div className='input-group'>
-            <input type='text' placeholder='Search Whatever You Want'/>
+            <input type='text' placeholder='Search Whatever You Want' onChange={(e) => setInputValue(e.target.value)}/>
             <HiSearch fontSize={21} color='green' id='search'/>
             <div id='Color-switcher' onClick={() => setToggle(!toggle)}>
                 <div id={toggle ? 'Color-switcher-mover' : 'Color-switcher-moved'}></div>

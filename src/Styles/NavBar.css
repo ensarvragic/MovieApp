@@ -105,5 +105,6 @@ span #HomeLight:hover, #MoviesLight:hover, #TrendingLight:hover, #PricingLight:h
 #search{
     position: absolute;
     margin-left: 310px;
+    cursor: pointer;
 }
  
