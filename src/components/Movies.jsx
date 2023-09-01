@@ -1,6 +1,6 @@
 import React, { Fragment, useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import {AiFillPlayCircle} from 'react-icons/ai';
+import {AiFillPlayCircle, AiOutlineClose} from 'react-icons/ai';
 import NoImg from  '../Styles/No_image_available.svg.png';
 import '../Styles/videos.css'
 import { Container } from './NavBar';
@@ -10,6 +10,7 @@ import { Container } from './NavBar';
 const Movies = () => {
     const {toggle, inputValue} = useContext(Container)
     const input = inputValue
+    const [movieTitle, SetMovieTitle] = useState('')
     const [moviesData, setMoviesData] = useState([])
     const [trailer, setTrailer] = useState(true)
     const Shown = input ? 'search' : 'discover'
@@ -27,9 +28,16 @@ const Movies = () => {
         setMoviesData(results)
     }
     useEffect(() => {
-        MovieCall()
+        setTimeout(() => {
+            MovieCall()
+        }, 100)
     }, [input])
     console.log(moviesData)
+
+    const MoviesTitle = (movie) => {
+        SetMovieTitle(movie.title)
+        setTrailer(!trailer)
+    }
 
 
   return (
@@ -40,13 +48,21 @@ const Movies = () => {
             return(
             <Fragment>
                 <div id={trailer ? 'container' : 'NoContainer'}>
-                <AiFillPlayCircle color='#fff' fontSize={40} id='playIcon' />
-                <img src={movie.poster_path  ? `${Image}${movie.poster_path}` : NoImg} alt=''/>
+                <AiFillPlayCircle color='#fff' fontSize={40} id={trailer ? 'playIcon' : 'hide'} onClick={() => MoviesTitle(movie)} />
+                <img src={movie.poster_path  ? `${Image}${movie.poster_path}` : NoImg} alt='' onClick={() => MoviesTitle(movie)}/>
                 <h3  style={{margin: 15}}>{movie.title}</h3>
                 </div>
             </Fragment>
             )
         })}
+        <AiOutlineClose 
+      id={trailer ? 'Nothing' : 'Exit1'} 
+      className={toggle ? 'DarkTheme' : 'LightThemeClose'} 
+      fontSize={55} 
+      color='#fff'
+      cursor={'pointer'}
+      onClick={() => setTrailer(true)}
+      />
         </div>
         </div>
     </Fragment>
