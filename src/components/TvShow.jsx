@@ -3,7 +3,7 @@ import { Container } from './NavBar';
 import axios from 'axios'
 import NoImg from  '../Styles/No_image_available.svg.png';
 import {AiFillPlayCircle, AiOutlineClose} from 'react-icons/ai';
-import TrailerTvShows from '../Trailers/TrailerTvShow';
+
 
 
 const TvShow = () => {
@@ -33,7 +33,7 @@ const TvShow = () => {
     }, [input])
     console.log(showData)
 
-    const TvShowSite = (shows) => {
+    const TvShowTitle = (shows) => {
       setTitle(shows.name)
       setTrailer(!trailer)
     }
@@ -49,16 +49,16 @@ const TvShow = () => {
               <AiFillPlayCircle 
               color='#fff' 
               fontSize={40} 
-              id={trailer ? 'playIcon' : 'hide '} 
-              onClick={() => TvShowSite(shows)} 
+              id={trailer ? 'playIcon' : 'hide'} 
+              onClick={() => TvShowTitle(shows)} 
               />
-              <img src={shows.poster_path ? `${Image}${shows.poster_path}` : NoImg} alt='' onClick={() => TvShowSite(shows)} />
+              <img src={shows.poster_path ? `${Image}${shows.poster_path}` : NoImg} alt='' onClick={() => TvShowTitle(shows)} />
               <h3 className={toggle ? 'mainColor' : 'secondaryColor'}>{shows.name}</h3>
             </div>
           </Fragment>
         )
-      })}
-      {trailer ? console.log : <TrailerTvShows TvShowsTitle={title}/>} 
+      })};
+
       <AiOutlineClose 
       id={trailer ? 'Nothing' : 'Exit1'} 
       className={toggle ? 'DarkTheme' : 'LightThemeClose'} 

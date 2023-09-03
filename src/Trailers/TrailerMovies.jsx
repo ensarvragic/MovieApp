@@ -1,34 +1,32 @@
-import React, { Fragment, useEffect } from 'react'
-import { useState } from 'react'
-import ReactPlayer from 'react-player'
-import movieTrailer from 'movie-trailer'
-import '../Styles/TrailerMovie.css'
+import React, { Fragment, useEffect, useState } from 'react';
+import ReactPlayer from 'react-player';
+import movieTrailer from 'movie-trailer';
+import '../Styles/TrailerMovie.css';
 
-const TrailerMovies = ({moviesTitle}) => {
-    const [video, setVideo] = useState('')
-    const [videoURL, setVideoURL] = useState('https://youtu.be/sa91-dTv9Gk')
+const TrailerMovies = ({ moviesTitle }) => {
+    const [video, setVideo] = useState('');
+    const [videoURL, setVideoURL] = useState('');
 
     const handleSearch = () => {
-            setVideo(moviesTitle)
-            movieTrailer(video).then((res) => {
-            setVideoURL(res)
+        setVideo(moviesTitle)
+        movieTrailer(video).then((res) => {
+        setVideoURL(res)
         });
-    }
+    };
 
     useEffect(() => {
-        handleSearch()
-    },[videoURL])
+        handleSearch();
+    }, [videoURL]);
 
-  return (
-    <Fragment>
-        <div className='container'>
+    return (
+        <Fragment>
+            <div className='Container'>
+            </div>
+            <div className='player'>
+                <ReactPlayer url={videoURL} controls={true} width={'1200px'} height={'600px'} muted={false} />
+            </div>
+        </Fragment>
+    );
+};
 
-        </div>
-        <div className='player'>
-            <ReactPlayer url={videoURL} controls={true} width={'1200px'} height={'600px'} muted={false}/>
-        </div>
-    </Fragment>
-  )
-}
-
-export default TrailerMovies
+export default TrailerMovies;
