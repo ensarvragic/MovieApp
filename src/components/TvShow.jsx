@@ -6,24 +6,29 @@ import {AiFillPlayCircle, AiOutlineClose} from 'react-icons/ai';
 
 const TvShow = () => {
   const {toggle, inputValue} = useContext(Container)
+  const input = inputValue
   const [showData, setShowData] = useState([])
+  const Shown = input ? 'search' : 'discover'
   const [trailer, setTrailer] = useState(true)
   const [title, setTitle] = useState('')
-  const Api = 'http://api.themoviedb.org/3/discover/tv'
+  const Api = `http://api.themoviedb.org/3/${Shown}/tv`
   const Image = 'https://image.tmdb.org/t/p/w500'
 
   const TvShows = async () => {
     const data = await axios.get(Api, {
       params: {
         api_key: '7e0310bec650093cdccd5b8e1e4f253d',
+        query: input
       }
     })
     const results = (data.data.results)
     setShowData(results)
   }
     useEffect(() => {
-      TvShows()
-    }, [])
+      setTimeout(() => {
+        TvShows()
+      }, 100)
+    }, [input])
     console.log(showData)
 
     const TvShowSite = (shows) => {
