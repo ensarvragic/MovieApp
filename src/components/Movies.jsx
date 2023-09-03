@@ -4,6 +4,7 @@ import {AiFillPlayCircle, AiOutlineClose} from 'react-icons/ai';
 import NoImg from  '../Styles/No_image_available.svg.png';
 import '../Styles/videos.css'
 import { Container } from './NavBar';
+import TrailerMovies from '../Trailers/TrailerMovies';
 
 
 
@@ -19,7 +20,7 @@ const Movies = () => {
 
     const MovieCall = async () => {
         const data = await axios.get(Api, {
-            params: {
+            params: {   
                 api_key: '7e0310bec650093cdccd5b8e1e4f253d',
                 query: input
             }
@@ -50,11 +51,12 @@ const Movies = () => {
                 <div id={trailer ? 'container' : 'NoContainer'}>
                 <AiFillPlayCircle color='#fff' fontSize={40} id={trailer ? 'playIcon' : 'hide'} onClick={() => MoviesTitle(movie)} />
                 <img src={movie.poster_path  ? `${Image}${movie.poster_path}` : NoImg} alt='' onClick={() => MoviesTitle(movie)}/>
-                <h3  style={{margin: 15}}>{movie.title}</h3>
+                <h3  style={{margin: 15}} className={toggle ? 'mainColor' : 'secondaryColor'}>{movie.title}</h3>
                 </div>
             </Fragment>
             )
         })}
+        {trailer ? console.log : <TrailerMovies moviesTitle={movieTitle}/>}
         <AiOutlineClose 
       id={trailer ? 'Nothing' : 'Exit1'} 
       className={toggle ? 'DarkTheme' : 'LightThemeClose'} 

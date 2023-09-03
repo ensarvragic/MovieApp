@@ -54,7 +54,7 @@ const Trends = () => {
           )
         })}
         <AiOutlineClose 
-      id={trailer ? 'playIcon' : 'hide'} 
+      id={trailer ? 'Nothing' : 'Exit1'} 
       className={toggle ? 'DarkTheme' : 'LightThemeClose'} 
       fontSize={55} 
       color='#fff'
