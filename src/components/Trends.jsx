@@ -4,6 +4,7 @@ import { Container } from './NavBar';
 import {AiOutlineClose, AiFillPlayCircle} from 'react-icons/ai';
 import NoImg from  '../Styles/No_image_available.svg.png';
 import '../Styles/videos.css'
+import TrailerTrending from '../Trailers/TrailerTrending';
 
 
 const Trends = () => {
@@ -53,7 +54,7 @@ const Trends = () => {
             </Fragment>
           )
         })}
-        {trailer ? console.log : <TrailerMovies moviesTitle={movieTitle}/>}
+        {trailer ? console.log() : <TrailerTrending trends  TrendTitle={trendTitle}/>}
         <AiOutlineClose 
       id={trailer ? 'Nothing' : 'Exit1'} 
       className={toggle ? 'DarkTheme' : 'LightThemeClose'} 

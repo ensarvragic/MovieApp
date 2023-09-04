@@ -3,12 +3,12 @@ import ReactPlayer from 'react-player';
 import movieTrailer from 'movie-trailer';
 import '../Styles/TrailerMovie.css';
 
-const TrailerMovies = ({ moviesTitle }) => {
+const TrailerTrending = ({ TrendTitle }) => {
     const [video, setVideo] = useState('');
     const [videoURL, setVideoURL] = useState('');
 
     const handleSearch = () => {
-        setVideo(moviesTitle)
+        setVideo(TrendTitle)
         movieTrailer(video).then((res) => {
         setVideoURL(res)
         });
@@ -29,4 +29,4 @@ const TrailerMovies = ({ moviesTitle }) => {
     );
 };
 
-export default TrailerMovies;
+export default TrailerTrending;
