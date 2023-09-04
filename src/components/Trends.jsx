@@ -54,7 +54,7 @@ const Trends = () => {
             </Fragment>
           )
         })}
-        {trailer ? console.log() : <TrailerTrending trends  TrendTitle={trendTitle}/>}
+        {trailer ? console.log() : <TrailerTrending TrendTitle={trendTitle} toggle={toggle}/>}
         <AiOutlineClose 
       id={trailer ? 'Nothing' : 'Exit1'} 
       className={toggle ? 'DarkTheme' : 'LightThemeClose'} 
