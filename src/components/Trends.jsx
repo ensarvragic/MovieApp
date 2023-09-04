@@ -53,6 +53,7 @@ const Trends = () => {
             </Fragment>
           )
         })}
+        {trailer ? console.log : <TrailerMovies moviesTitle={movieTitle}/>}
         <AiOutlineClose 
       id={trailer ? 'Nothing' : 'Exit1'} 
       className={toggle ? 'DarkTheme' : 'LightThemeClose'} 
